@@ -2,6 +2,7 @@
   <div class="container">
     <Header title='Task Tracker'/>
     <Tasks :tasks="tasks"/>
+    <!-- //vbind tasks to tasks data  -->
   </div>
 </template>
 
