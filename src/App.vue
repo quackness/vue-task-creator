@@ -1,11 +1,10 @@
 <template>
-<h1>Hello World!</h1>
-<h3></h3>
+  <div class="container">
+    <h1>Hello World!</h1>
+  </div>
 </template>
 
 <script>
-
-
 export default {
   name: 'App',
   components: {
