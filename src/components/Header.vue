@@ -9,3 +9,12 @@ export default {
   name: 'Header',
 }
 </script>
+
+<style scoped>
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+</style>
