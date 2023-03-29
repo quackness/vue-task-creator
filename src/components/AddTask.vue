@@ -40,6 +40,11 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault()
+      if (!this.text) {
+        alert("Please eneter a task")
+        return
+      }
+      
     }
   }
 }
