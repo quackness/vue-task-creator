@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header @toggle-add-task="toggleAddTask" title='Task Tracker' :showAddTask="showAddTask"/>
+    <Header @toggle-add-task="toggleAddTask" title='Task Tracker' :showAddtask="showAddtask"/>
     <div v-if="showAddtask">
       <AddTask @add-task="addTask"/>
     </div>
