@@ -26,8 +26,17 @@
 
 <script>
 export default {
-  name: 'AddTask'
+  name: 'AddTask',
+  data() {
+    return {
+      text: "",
+      day: "",
+      reminder: false
+    }
+  }
 }
+
+
 </script>
 
 <style scoped>
