@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header title='Task Tracker'/>
-    <Tasks :tasks="tasks"/>
+    <Tasks @delete-task="deleteTask" :tasks="tasks"/>
     <!-- //vbind tasks to tasks data  -->
   </div>
 </template>
@@ -18,6 +18,12 @@ export default {
   data() {
     return {
       tasks: [],
+    }
+  },
+  methods: {
+    deleteTask(id) {
+      console.log("task", id)
+
     }
   },
   created() {
