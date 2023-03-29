@@ -1,5 +1,5 @@
 <template>
-  
+  <h3>{{task.text}}</h3>
 </template>
 
 <script>
