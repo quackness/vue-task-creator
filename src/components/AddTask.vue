@@ -3,10 +3,12 @@
  <form class="add-form">
     <div class="form-control">
       <label>Task</label>
+      <!-- v-model allows to bind data from the form -->
       <input type="text" v-model="text" name="text" placeholder="Add Task" />
     </div>
     <div class="form-control">
       <label>Day &amp; Time</label>
+        <!-- v-model allows to bind data from the form -->
       <input
         type="text"
         v-model="day"
@@ -16,6 +18,7 @@
     </div>
     <div class="form-control form-control-check">
       <label>Set Reminder</label>
+        <!-- v-model allows to bind data from the form -->
       <input type="checkbox" v-model="reminder" name="reminder" />
     </div>
 
