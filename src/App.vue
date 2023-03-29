@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <Header title='Task Tracker'/>
-     <AddTask @add-task="addTask"/>
+    <div v-if="showAddtask">
+      <AddTask @add-task="addTask"/>
+    </div>
     <Tasks 
     @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"/>
     <!-- //vbind tasks to tasks data  -->
@@ -24,6 +26,7 @@ export default {
   data() {
     return {
       tasks: [],
+      showAddtask: false
     }
   },
   methods: {
