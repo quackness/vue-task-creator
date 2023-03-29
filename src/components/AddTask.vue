@@ -1,6 +1,6 @@
 <template>
   <div>
- <form class="add-form">
+ <form @submit="onSubmit" class="add-form">
     <div class="form-control">
       <label>Task</label>
       <!-- v-model allows to bind data from the form -->
@@ -35,6 +35,11 @@ export default {
       text: "",
       day: "",
       reminder: false
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
     }
   }
 }
