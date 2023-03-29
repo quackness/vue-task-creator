@@ -4,7 +4,7 @@
     <Button 
     @toggle-add-task="$emit('toggle-add-task')" 
     :text="btnTextVariation ? 'Close' : 'Add Task'" 
-    color="green"/>
+    :color="btnTextVariation ? 'red' : 'green'"/>
   </header>
 </template>
 
