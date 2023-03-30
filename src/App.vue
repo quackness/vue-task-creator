@@ -46,13 +46,13 @@ export default {
     },
     async fetchTasks() {
       const res = await fetch('http://localhost:5000/tasks')
-      const data = await res.json
+      const data = await res.json()
       return data
 
     }
   },
-  created() {
-      this.tasks = this.fetchTasks
+  async created() {
+      this.tasks = await this.fetchTasks()
   },
 }
 </script>
