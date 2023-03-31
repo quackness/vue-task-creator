@@ -1,31 +1,30 @@
 <template>
-    <div v-if="showAddtask">
-      <AddTask @add-task="addTask" />
-    </div>
-    <Tasks
-      @toggle-reminder="toggleReminder"
-      @delete-task="deleteTask"
-      :tasks="tasks"
-    />
-    <!-- //vbind tasks to tasks data  -->
+  <div v-if="showAddtask">
+    <AddTask @add-task="addTask" />
+  </div>
+  <Tasks
+    @toggle-reminder="toggleReminder"
+    @delete-task="deleteTask"
+    :tasks="tasks"
+  />
+  <!-- //vbind tasks to tasks data  -->
 </template>
 
 <script>
-  import Tasks from "../components/Tasks";
-  import AddTask from "../components/AddTask";
-  export default {
-    name: "Home",
-    components: {
-      Tasks,
-      AddTask
-    },
-    data() {
-      return {
-        tasks: []
-      } 
-    },
-    methods: {
- 
+import Tasks from "../components/Tasks";
+import AddTask from "../components/AddTask";
+export default {
+  name: "Home",
+  components: {
+    Tasks,
+    AddTask,
+  },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  methods: {
     async addTask(task) {
       const res = await fetch("api/tasks", {
         method: "POST",
@@ -82,12 +81,5 @@
   async created() {
     this.tasks = await this.fetchTasks();
   },
-
-
-
-
-
-
-
-  }
+};
 </script>
