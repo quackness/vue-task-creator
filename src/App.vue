@@ -5,15 +5,7 @@
       title="Task Tracker"
       :btnTextVariation="showAddtask"
     />
-    <div v-if="showAddtask">
-      <AddTask @add-task="addTask" />
-    </div>
-    <Tasks
-      @toggle-reminder="toggleReminder"
-      @delete-task="deleteTask"
-      :tasks="tasks"
-    />
-    <!-- //vbind tasks to tasks data  -->
+
     <router-view></router-view>
     <Footer />
   </div>
@@ -22,23 +14,17 @@
 <script>
 import Header from "./components/Header";
 import Footer from "./components/Footer.vue";
-import Tasks from "./components/Tasks";
-import AddTask from "./components/AddTask";
-
 
 export default {
   name: "App",
   components: {
     Header,
-    Footer,
-    Tasks,
-    AddTask,
-    
+    Footer    
   },
   data() {
     return {
-      tasks: [],
-      showAddtask: false,
+      
+      showAddtask: false
     };
   },
   methods: {
