@@ -6,7 +6,7 @@
       :btnTextVariation="showAddtask"
     />
 
-    <router-view></router-view>
+    <router-view :showAddtask="showAddtask"></router-view>
     <Footer />
   </div>
 </template>
