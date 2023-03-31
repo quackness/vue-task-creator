@@ -2,14 +2,9 @@
 <footer>
   <p>Copyright &copy; 2023</p>
   <a href="/about">About</a>
+</footer>
   
 </template>
-
-<script>
-export default {
-  name: 'Footer'
-}
-</script>
 
 <style scoped>
 a {

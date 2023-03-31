@@ -1,103 +1,115 @@
 <template>
   <div class="container">
-    <Header @toggle-add-task="toggleAddTask" title='Task Tracker' :btnTextVariation="showAddtask"/>
+    <Header
+      @toggle-add-task="toggleAddTask"
+      title="Task Tracker"
+      :btnTextVariation="showAddtask"
+    />
     <div v-if="showAddtask">
-      <AddTask @add-task="addTask"/>
+      <AddTask @add-task="addTask" />
     </div>
-    <Tasks 
-    @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"/>
+    <Tasks
+      @toggle-reminder="toggleReminder"
+      @delete-task="deleteTask"
+      :tasks="tasks"
+    />
     <!-- //vbind tasks to tasks data  -->
-   
-   
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from './components/Header'
-import Tasks from './components/Tasks'
-import AddTask from './components/AddTask'
+import Header from "./components/Header";
+import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
+import Footer from "./components/Footer.vue";
+
 export default {
-  name: 'App',
+  name: "App",
   components: {
-   Header,
-   Tasks,
-   AddTask   
+    Header,
+    Tasks,
+    AddTask,
+    Footer,
   },
   data() {
     return {
       tasks: [],
-      showAddtask: false
-    }
+      showAddtask: false,
+    };
   },
   methods: {
     toggleAddTask() {
-      this.showAddtask = !this.showAddtask
+      this.showAddtask = !this.showAddtask;
     },
     async addTask(task) {
-      const res = await fetch('api/tasks', {
+      const res = await fetch("api/tasks", {
         method: "POST",
         headers: {
-          'Content-type': 'application/json',
+          "Content-type": "application/json",
         },
-         body: JSON.stringify(task)
-      })
-      const data = await res.json()
-      this.tasks = [...this.tasks, data]
+        body: JSON.stringify(task),
+      });
+      const data = await res.json();
+      this.tasks = [...this.tasks, data];
     },
     async deleteTask(id) {
-      if (confirm('Are you sure?')) {
+      if (confirm("Are you sure?")) {
         //request:
         const res = await fetch(`api/tasks/${id}`, {
-          method: 'DELETE'
-        })
-        res.status === 200 ? (this.tasks = this.tasks.filter((task) => task.id !== id)) : alert("Error deleting task")
-        
+          method: "DELETE",
+        });
+        res.status === 200
+          ? (this.tasks = this.tasks.filter((task) => task.id !== id))
+          : alert("Error deleting task");
       }
     },
     async toggleReminder(id) {
-      const taskToToggle = await this.fetchTask(id)
+      const taskToToggle = await this.fetchTask(id);
       //get the id
-      const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
+      const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
       //change the remonder in the client
       const res = await fetch(`api/tasks/${id}`, {
-        method: 'PUT', //request
+        method: "PUT", //request
         headers: {
-          'Content-type' : 'application/json'
+          "Content-type": "application/json",
         },
-        body: JSON.stringify(updTask)
-      })
-      console.log("res", res)
+        body: JSON.stringify(updTask),
+      });
+      console.log("res", res);
 
-      const data = await res.json()
-      console.log("data", data)
-      this.tasks = this.tasks.map(task => task.id === id ? {...task, reminder: !data.reminder} : task)
+      const data = await res.json();
+      console.log("data", data);
+      this.tasks = this.tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !data.reminder } : task
+      );
     },
     async fetchTasks() {
-      const res = await fetch('api/tasks')
-      const data = await res.json()
-      return data
+      const res = await fetch("api/tasks");
+      const data = await res.json();
+      return data;
     },
-      async fetchTask(id) {
-      const res = await fetch(`api/tasks/${id}`)
-      const data = await res.json()
-      return data
-    }
+    async fetchTask(id) {
+      const res = await fetch(`api/tasks/${id}`);
+      const data = await res.json();
+      return data;
+    },
   },
   async created() {
-      this.tasks = await this.fetchTasks()
+    this.tasks = await this.fetchTasks();
   },
-}
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .container {
   max-width: 500px;
