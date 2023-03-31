@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-roter'
+import { createRouter, createWebHistory } from 'vue-router'
 import About from '../views/About'
 
 const routes = [
