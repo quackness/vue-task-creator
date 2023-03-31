@@ -19,8 +19,10 @@
       Tasks,
       AddTask
     },
-    data: {
-      tasks: []
+    data() {
+      return {
+        tasks: []
+      } 
     },
     methods: {
  
