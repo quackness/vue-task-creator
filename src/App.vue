@@ -14,23 +14,26 @@
       :tasks="tasks"
     />
     <!-- //vbind tasks to tasks data  -->
+    <router-view></router-view>
     <Footer />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
+import Footer from "./components/Footer.vue";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
-import Footer from "./components/Footer.vue";
+
 
 export default {
   name: "App",
   components: {
     Header,
+    Footer,
     Tasks,
     AddTask,
-    Footer,
+    
   },
   data() {
     return {
